@@ -21,13 +21,13 @@ const app = express();
 const CLIENT_ORIGIN =
   process.env.NODE_ENV === 'development'
     ? `http://localhost:${process.env.CLIENT_PORT}`
-    : `http://${process.env.CLIENT_ORIGIN}:${process.env.CLIENT_PORT}`;
+    : `${process.env.CLIENT_ORIGIN || 'http://51.250.20.109'}:${process.env.CLIENT_PORT}`;
 
 console.log(CLIENT_ORIGIN);
 
 app.use(
   cors({
-    origin: ['*'],
+    origin: [CLIENT_ORIGIN],
     credentials: true,
   }),
 );
