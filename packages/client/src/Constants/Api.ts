@@ -1,10 +1,7 @@
-import * as process from 'process';
 import { SERVER_HOST } from './server-constants';
 
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 export const SERVER_URL = `${SERVER_HOST}/api`;
-
-console.log('SERVER_URL', SERVER_URL, process?.env?.SERVER_PORT);
 
 export enum METHODS {
   GET = 'GET',
