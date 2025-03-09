@@ -17,9 +17,17 @@ import { createClientAndConnect } from './PGClient';
 import { syncSequelize } from './Sequelize';
 
 const app = express();
+
+const CLIENT_ORIGIN =
+  process.env.NODE_ENV === 'development'
+    ? `http://localhost:${process.env.CLIENT_PORT}`
+    : `${process.env.CLIENT_ORIGIN || 'http://51.250.20.109'}:${process.env.CLIENT_PORT}`;
+
+console.log(CLIENT_ORIGIN);
+
 app.use(
   cors({
-    origin: [`http://localhost:${process.env.CLIENT_PORT}`],
+    origin: [CLIENT_ORIGIN],
     credentials: true,
   }),
 );
